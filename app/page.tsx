@@ -8,6 +8,8 @@ import Contact from "@/app/components/sections/Contact";
 import Footer from "@/app/components/Footer";
 import RSVP from "@/app/components/rsvp/RSVP";
 
+// This is the main page of the wedding website, which composes all the different sections together.
+
 export default function Page() {
   return (
     <>
