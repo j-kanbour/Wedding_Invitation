@@ -26,7 +26,7 @@ const client = new JWT({
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
-const spreadsheetId = "1lvBKI--n7SGfYZvpz6ihAIPDtaj4s1wvOhARi3Z5r_4";
+const spreadsheetId = process.env.SPREADSHEET_ID;
 
 // Authorize and create a Google Sheets API instance
 const sheets = google.sheets({ version: "v4", auth: client });

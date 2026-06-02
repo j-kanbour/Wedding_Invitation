@@ -39,7 +39,7 @@ export async function GET(request: Request): Promise<NextResponse<GuestData | { 
     if (!paramFamilyID) {
         return NextResponse.json({ error: "Missing familyId parameter" }, { status: 400 });
     }
-    const spreadsheetId = "1lvBKI--n7SGfYZvpz6ihAIPDtaj4s1wvOhARi3Z5r_4";
+    const spreadsheetId = process.env.SPREADSHEET_ID;
 
     const response = await sheets.spreadsheets.values.get({
         spreadsheetId,

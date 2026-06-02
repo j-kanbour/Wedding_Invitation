@@ -28,7 +28,7 @@ const sheets = google.sheets({ version: "v4", auth: client });
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request): Promise<NextResponse<FamilyData>> {
-    const spreadsheetId = "1lvBKI--n7SGfYZvpz6ihAIPDtaj4s1wvOhARi3Z5r_4";
+    const spreadsheetId = process.env.SPREADSHEET_ID;
 
     const response = await sheets.spreadsheets.values.get({
         spreadsheetId,
