@@ -10,6 +10,7 @@ export interface GuestInfo {
   rsvp: string;
   dietary: string;
   message: string;
+  isUnnamed?: boolean;
 }
 
 // guestId → guest details
@@ -24,4 +25,5 @@ export interface Member {
   name: string;
   age?: string;
   isGuest?: boolean;
+  isUnnamed?: boolean;
 }

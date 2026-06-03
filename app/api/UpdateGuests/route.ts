@@ -1,5 +1,6 @@
 import { google } from "googleapis";
 import { JWT } from "google-auth-library";
+import { NextResponse } from "next/server";
 
 
 //Update guest members in the spreadsheet with the new RSVP data
@@ -50,30 +51,47 @@ function findRow(guestId: string): Promise<number | null> {
     });
 }
 
-export async function POST(request: Request): Promise<void> 
+export async function POST(request: Request): Promise<NextResponse>
 {
-    const requestData = await request.json(); //type GuestData
-    console.log("Received data:", requestData);
+    const requestData = await request.json();
 
     for (const guestId in requestData) {
         const guestInfo = requestData[guestId];
         const row = await findRow(guestId);
 
         if (row) {
-            await sheets.spreadsheets.values.update({
-                spreadsheetId,
-                range: `'Guest List Total'!F${row}:H${row}`,
-                valueInputOption: "USER_ENTERED",
-                requestBody: {
-                    values: [[
-                        guestInfo.rsvp,
-                        guestInfo.dietary,
-                        guestInfo.message
-                    ]]
-                }
-            });
+            if (guestInfo.isUnnamed) {
+                await sheets.spreadsheets.values.update({
+                    spreadsheetId,
+                    range: `'Guest List Total'!D${row}:H${row}`,
+                    valueInputOption: "USER_ENTERED",
+                    requestBody: {
+                        values: [[
+                            guestInfo.firstName,
+                            guestInfo.lastName,
+                            guestInfo.rsvp,
+                            guestInfo.dietary,
+                            guestInfo.message
+                        ]]
+                    }
+                });
+            } else {
+                await sheets.spreadsheets.values.update({
+                    spreadsheetId,
+                    range: `'Guest List Total'!F${row}:H${row}`,
+                    valueInputOption: "USER_ENTERED",
+                    requestBody: {
+                        values: [[
+                            guestInfo.rsvp,
+                            guestInfo.dietary,
+                            guestInfo.message
+                        ]]
+                    }
+                });
+            }
         } else {
             console.warn(`Guest ID ${guestId} not found in the spreadsheet.`);
         }
     }
+    return NextResponse.json({ ok: true });
 }

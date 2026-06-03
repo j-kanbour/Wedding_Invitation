@@ -20,6 +20,7 @@ export default function RSVP() {
 
   const [attendance, setAttendance] = useState<Record<string, Attendance>>({});
   const [dietary, setDietary] = useState<Record<string, string>>({});
+  const [names, setNames] = useState<Record<string, { firstName: string; lastName: string }>>({});
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -55,14 +56,17 @@ export default function RSVP() {
       // Pre-populate from existing RSVP data
       const a: Record<string, Attendance> = {};
       const d: Record<string, string> = {};
+      const n: Record<string, { firstName: string; lastName: string }> = {};
       let sharedNote = "";
       for (const [guestId, info] of Object.entries(data)) {
         if (info.rsvp === "yes" || info.rsvp === "no") a[guestId] = info.rsvp;
         d[guestId] = info.dietary || "";
+        n[guestId] = { firstName: info.firstName, lastName: info.lastName };
         if (info.message) sharedNote = info.message;
       }
       setAttendance(a);
       setDietary(d);
+      setNames(n);
       setNote(sharedNote);
       setStage("party");
     } catch {
@@ -77,6 +81,12 @@ export default function RSVP() {
   function setDiet(guestId: string, value: string) {
     setDietary((s) => ({ ...s, [guestId]: value }));
   }
+  function setFirstName(guestId: string, value: string) {
+    setNames((s) => ({ ...s, [guestId]: { ...s[guestId], firstName: value } }));
+  }
+  function setLastName(guestId: string, value: string) {
+    setNames((s) => ({ ...s, [guestId]: { ...s[guestId], lastName: value } }));
+  }
 
   function resetAll() {
     setStage("search");
@@ -84,6 +94,7 @@ export default function RSVP() {
     setGuests(null);
     setAttendance({});
     setDietary({});
+    setNames({});
     setNote("");
     fetchFamilies();
   }
@@ -96,6 +107,8 @@ export default function RSVP() {
       for (const [guestId, info] of Object.entries(guests)) {
         updated[guestId] = {
           ...info,
+          firstName: info.isUnnamed ? (names[guestId]?.firstName || "") : info.firstName,
+          lastName: info.isUnnamed ? (names[guestId]?.lastName || "") : info.lastName,
           rsvp: attendance[guestId] || "",
           dietary: dietary[guestId] || "",
           message: note,
@@ -152,6 +165,7 @@ export default function RSVP() {
     const members: Member[] = Object.entries(guests).map(([guestId, info]) => ({
       id: guestId,
       name: `${info.firstName} ${info.lastName}`.trim(),
+      isUnnamed: info.isUnnamed,
     }));
 
     return (
@@ -183,6 +197,10 @@ export default function RSVP() {
               dietary={dietary[m.id] || ""}
               onAttendance={(v) => setAtt(m.id, v)}
               onDietary={(v) => setDiet(m.id, v)}
+              firstName={m.isUnnamed ? (names[m.id]?.firstName || "") : undefined}
+              lastName={m.isUnnamed ? (names[m.id]?.lastName || "") : undefined}
+              onFirstName={m.isUnnamed ? (v) => setFirstName(m.id, v) : undefined}
+              onLastName={m.isUnnamed ? (v) => setLastName(m.id, v) : undefined}
             />
           ))}
         </div>

@@ -52,15 +52,17 @@ export async function GET(request: Request): Promise<NextResponse<GuestData | { 
     const result: GuestData = {};
     for (const row of values) {
         const [guestId, familyID, familyName, firstName, lastName, rsvp, dietary, message] = row;
-        console.log(familyID, paramFamilyID);
         if (guestId && familyID == paramFamilyID) {
+            const fn = firstName ?? "";
+            const ln = lastName ?? "";
             result[guestId] = {
                 familyName: familyName ?? "",
-                firstName: firstName ?? "",
-                lastName: lastName ?? "",
+                firstName: fn,
+                lastName: ln,
                 rsvp: rsvp ?? "",
                 dietary: dietary ?? "",
-                message: message ?? ""
+                message: message ?? "",
+                isUnnamed: fn === "" && ln === "",
             };
         }
     }

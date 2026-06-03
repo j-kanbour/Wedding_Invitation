@@ -9,6 +9,10 @@ interface MemberRowProps {
   onAttendance: (value: Attendance) => void;
   onDietary: (value: string) => void;
   optional?: boolean;
+  firstName?: string;
+  lastName?: string;
+  onFirstName?: (value: string) => void;
+  onLastName?: (value: string) => void;
 }
 
 export default function MemberRow({
@@ -18,15 +22,40 @@ export default function MemberRow({
   onAttendance,
   onDietary,
   optional,
+  firstName,
+  lastName,
+  onFirstName,
+  onLastName,
 }: MemberRowProps) {
   const attending = attendance === "yes";
   return (
     <div className={`rsvp-member${optional ? " is-optional" : ""}`}>
       <div className="rsvp-member-head">
         <div className="rsvp-member-name">
-          {member.name}
-          {member.age === "under16" && <span className="rsvp-tag">under 16</span>}
-          {member.isGuest && <span className="rsvp-tag">plus one</span>}
+          {member.isUnnamed ? (
+            <div className="rsvp-name-inputs">
+              <input
+                type="text"
+                className="rsvp-name-input"
+                placeholder="First name"
+                value={firstName ?? ""}
+                onChange={(e) => onFirstName?.(e.target.value)}
+              />
+              <input
+                type="text"
+                className="rsvp-name-input"
+                placeholder="Last name"
+                value={lastName ?? ""}
+                onChange={(e) => onLastName?.(e.target.value)}
+              />
+            </div>
+          ) : (
+            <>
+              {member.name}
+              {member.age === "under16" && <span className="rsvp-tag">under 16</span>}
+              {member.isGuest && <span className="rsvp-tag">plus one</span>}
+            </>
+          )}
         </div>
         <div
           className="rsvp-toggle"

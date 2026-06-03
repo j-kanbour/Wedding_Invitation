@@ -531,6 +531,25 @@ section { padding: clamp(70px, 11vw, 150px) clamp(20px, 6vw, 80px); }
 .rsvp-toggle-btn:hover { color: var(--ink); }
 .rsvp-toggle-btn.is-on { background: var(--ink); color: var(--paper); }
 
+.rsvp-name-inputs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.rsvp-name-input {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 4px 0;
+  font-family: var(--display);
+  font-size: clamp(20px, 2vw, 26px);
+  color: var(--ink);
+  outline: none;
+  width: 160px;
+}
+.rsvp-name-input:focus { border-bottom-color: var(--ink); }
+.rsvp-name-input::placeholder { color: var(--ink-faint); font-style: italic; }
+
 .rsvp-member-diet {
   margin-top: 14px;
   display: flex;
