@@ -32,17 +32,23 @@ export async function GET(request: Request): Promise<NextResponse<FamilyData>> {
 
     const response = await sheets.spreadsheets.values.get({
         spreadsheetId,
-        range: "'Guest List Total'!B2:D",
+        range: "'Guest List Total'!B2:E",
     });
 
     const values = response.data.values ?? [];
 
     const result: FamilyData = {};
     for (const row of values) {
-        const [familyId, familyName] = row;
-        if (familyId) {
-          result[familyId] = familyName ?? "";
-        } 
+        const [familyId, familyName, firstName, lastName] = row;
+        if (!familyId) continue;
+        if (!result[familyId]) {
+            result[familyId] = { name: familyName ?? "", guests: [] };
+        }
+        const fn = (firstName ?? "").trim();
+        const ln = (lastName ?? "").trim();
+        if (fn || ln) {
+            result[familyId].guests.push(`${fn} ${ln}`.trim());
+        }
     }
 
     return NextResponse.json(result);

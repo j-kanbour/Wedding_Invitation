@@ -1,6 +1,11 @@
-// familyId → familyName
+export interface FamilyEntry {
+  name: string;
+  guests: string[]; // full names of named guests in this family
+}
+
+// familyId → family entry
 export interface FamilyData {
-  [key: string]: string;
+  [key: string]: FamilyEntry;
 }
 
 export interface GuestInfo {

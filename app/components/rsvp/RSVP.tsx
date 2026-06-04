@@ -126,7 +126,7 @@ export default function RSVP() {
   }
 
   const selectedFamilyName =
-    families && selectedFamilyId ? families[selectedFamilyId] : "";
+    families && selectedFamilyId ? (families[selectedFamilyId]?.name ?? "") : "";
 
   if (stage === "done" && guests) {
     const yesCount = Object.values(attendance).filter((v) => v === "yes").length;

@@ -16,9 +16,11 @@ export function findFamilyMatches(
   if (q.length < 2) return [];
 
   const matches: FamilyMatch[] = [];
-  for (const [id, name] of Object.entries(families)) {
-    if (name.toLowerCase().includes(q)) {
-      matches.push({ familyId: id, familyName: name });
+  for (const [id, entry] of Object.entries(families)) {
+    const hitFamily = entry.name.toLowerCase().includes(q);
+    const hitGuest = entry.guests.some((n) => n.toLowerCase().includes(q));
+    if (hitFamily || hitGuest) {
+      matches.push({ familyId: id, familyName: entry.name });
       if (matches.length >= limit) break;
     }
   }
