@@ -141,7 +141,7 @@ export default function RSVP() {
       <div ref={doneRef} className="rsvp-card rsvp-done">
         <div className="rsvp-eyebrow">Your reply is in</div>
         <h3 className="rsvp-done-title">
-          Thank you. We can&apos;t wait to celebrate with you.
+          We can&apos;t wait to celebrate with you!
         </h3>
         <p className="rsvp-done-body">
           We&apos;ve received an RSVP for{" "}
