@@ -31,7 +31,7 @@ export default function Page() {
           <div 
             className="section-eyebrow centered"
           >
-            IV · Reply by 1 December
+            IV · Reply by 17 December
           </div>
           <h2
             style={{ fontFamily: "var(--font-parfumerie), var(--font-display), serif" }}
@@ -41,7 +41,7 @@ export default function Page() {
           <p>
             Find your name as it appears on your invitation, confirm who&apos;s
             coming, and share any dietary needs. Replies can be updated any time
-            before the first of December.
+            before the seventeenth of December.
           </p>
         </div>
         <RSVP />

@@ -139,18 +139,20 @@ export default function RSVP() {
     const yesCount = Object.values(attendance).filter((v) => v === "yes").length;
     return (
       <div ref={doneRef} className="rsvp-card rsvp-done">
-        <div className="rsvp-eyebrow">Thank you</div>
-        <h3 className="rsvp-done-title">Your reply is in.</h3>
+        <div className="rsvp-eyebrow">Your reply is in</div>
+        <h3 className="rsvp-done-title">
+          Thank you. We can&apos;t wait to celebrate with you.
+        </h3>
         <p className="rsvp-done-body">
           We&apos;ve received an RSVP for{" "}
           <em>
             {yesCount} guest{yesCount === 1 ? "" : "s"}
           </em>{" "}
-          from the <em>{selectedFamilyName}</em> invitation. We can&apos;t wait
-          to celebrate with you on the seventeenth of January.
+          from the <em>{selectedFamilyName}</em> invitation. See you on the
+          seventeenth of January.
         </p>
         <p className="rsvp-done-body small">
-          Need to change something? Re-submit any time before the 1<sup>st</sup>{" "}
+          Need to change something? Re-submit any time before the 17<sup>th</sup>{" "}
           of December and your latest reply will be used.
         </p>
         <button type="button" className="rsvp-link-btn" onClick={resetAll}>
