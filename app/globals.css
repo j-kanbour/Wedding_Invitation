@@ -289,6 +289,26 @@ section { padding: clamp(70px, 11vw, 150px) clamp(20px, 6vw, 80px); }
   margin-top: 8px;
   font-weight: 400;
 }
+.meta-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-soft);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.meta-address:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.meta-address svg { flex-shrink: 0; }
 
 /* dividers between sections */
 .ornament {
