@@ -19,6 +19,14 @@ export default function Hero() {
       >
         Jayden<span className="amp">&amp;</span><wbr />Jamelle
       </h1>
+      <></>
+      <figure className="hero-verse">
+        <span className="hero-verse-rule" aria-hidden />
+        <blockquote>
+          &ldquo;I have found the one whom my soul loves.&rdquo;
+        </blockquote>
+        <figcaption>Song of Solomon 3:4</figcaption>
+      </figure>
 
       <div className="hero-meta">
         <div className="hero-meta-item">
