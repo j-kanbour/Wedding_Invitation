@@ -25,7 +25,6 @@ export default function Reception() {
           </div>
         </div>
       </div>
-      <Ornament />
     </section>
   );
 }

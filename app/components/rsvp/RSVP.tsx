@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { findFamilyMatches } from "@/app/components/rsvp/SearchGuests";
 import type { Attendance, FamilyData, GuestData, Member } from "@/app/components/rsvp/types";
 import MemberRow from "@/app/components/rsvp/MemberRow";
@@ -23,6 +23,7 @@ export default function RSVP() {
   const [names, setNames] = useState<Record<string, { firstName: string; lastName: string }>>({});
   const [note, setNote] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const doneRef = useRef<HTMLDivElement>(null);
 
   function fetchFamilies() {
     setFamiliesLoading(true);
@@ -38,6 +39,12 @@ export default function RSVP() {
     fetchFamilies();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (stage === "done") {
+      doneRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [stage]);
 
   const matches = useMemo(
     () => (families && query.length >= 2 ? findFamilyMatches(query, families) : []),
@@ -131,7 +138,7 @@ export default function RSVP() {
   if (stage === "done" && guests) {
     const yesCount = Object.values(attendance).filter((v) => v === "yes").length;
     return (
-      <div className="rsvp-card rsvp-done">
+      <div ref={doneRef} className="rsvp-card rsvp-done">
         <div className="rsvp-eyebrow">Thank you</div>
         <h3 className="rsvp-done-title">Your reply is in.</h3>
         <p className="rsvp-done-body">

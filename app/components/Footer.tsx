@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="credit">
         Photography by{" "}
         <a
-          href="https://instagram.com/momentsthroughphotography"
+          href="https://www.instagram.com/momentsthrough_/"
           target="_blank"
           rel="noopener noreferrer"
         >

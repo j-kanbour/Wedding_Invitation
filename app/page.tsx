@@ -16,7 +16,7 @@ export default function Page() {
       <Topbar />
       <Hero />
 
-      <Photo src="/couple-03.png" alt="Jayden and Jamelle at sunset" aspect="wide" position="20%" />
+      <Photo src="/couple-04.JPG" alt="Jayden and Jamelle at sunset" aspect="wide" position="20%" />
 
       <Church />
 
@@ -24,7 +24,7 @@ export default function Page() {
 
       <Reception />
 
-      <Photo src="/couple-01.png" alt="Jayden and Jamelle laughing" aspect="wide" />
+      <Photo src="/couple-03.png" alt="Jayden and Jamelle laughing" aspect="tall" position="0%" />
 
       <section className="rsvp-wrap" id="rsvp">
         <div className="rsvp-header">
