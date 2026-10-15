@@ -1,7 +1,7 @@
 const CALENDAR_PARAMS = new URLSearchParams({
   action: "TEMPLATE",
   text: "Jayden & Jamelle — Wedding",
-  dates: "20260117T070000Z/20260117T130000Z",
+  dates: "20270117T070000Z/20270117T130000Z",
   details:
     "Ceremony at 2.00pm, reception to follow at Lantana Venues, Bonnyrigg.",
   location: "Lantana Venues, Bonnyrigg, NSW",
@@ -30,7 +30,7 @@ export default function Hero() {
 
       <div className="hero-meta">
         <div className="hero-meta-item">
-          Date<span className="v">Sat 17 Jan 2026</span>
+          Date<span className="v">Sat 17 Jan 2027</span>
         </div>
         <div className="dot" aria-hidden />
         <div className="hero-meta-item">

@@ -33,12 +33,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Jayden & Jamelle · 17 January 2026",
+  title: "Jayden & Jamelle · 17 January 2027",
   description:
-    "Jayden and Jamelle are getting married on the 17th of January, 2026. Ceremony followed by reception at Lantana Venues, Bonnyrigg.",
+    "Jayden and Jamelle are getting married on the 17th of January, 2027. Ceremony followed by reception at Lantana Venues, Bonnyrigg.",
   openGraph: {
     title: "Jayden & Jamelle",
-    description: "We're getting married — 17 January 2026.",
+    description: "We're getting married — 17 January 2027.",
     type: "website",
   },
 };

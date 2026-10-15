@@ -1,6 +1,6 @@
 # Jayden &amp; Jamelle — Wedding RSVP
 
-A Next.js 14 (App Router, TypeScript) site for the wedding of Jayden &amp; Jamelle on 17 January 2026.
+A Next.js 14 (App Router, TypeScript) site for the wedding of Jayden &amp; Jamelle on 17 January 2027.
 
 ## Getting started
 
@@ -71,7 +71,7 @@ nextjs/
 
 3. **Map pins.** `components/sections/Parking.tsx` has placeholder URLs for Google Maps, Apple Maps and Waze. Drop in your real shared pins.
 
-4. **Add-to-Calendar.** `components/Hero.tsx` builds a Google Calendar quick-add URL. Update the `dates`, `location`, and `details` once everything is finalised. (Times are in UTC — current value covers 5pm–1am Sydney for a Sat 17 Jan 2026 event in AEDT.)
+4. **Add-to-Calendar.** `components/Hero.tsx` builds a Google Calendar quick-add URL. Update the `dates`, `location`, and `details` once everything is finalised. (Times are in UTC — current value covers 5pm–1am Sydney for a Sat 17 Jan 2027 event in AEDT.)
 
 5. **Domain &amp; deploy.** Push to a Git host and deploy on Vercel — it'll detect Next.js automatically. Set `next start` if self-hosting.
 
