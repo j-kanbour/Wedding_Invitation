@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="mono-stack">
         <span>Jayden &amp; Jamelle</span>
         <span>·</span>
-        <span>17 . 01 . 26</span>
+        <span>17 . 01 . 27</span>
         <span>·</span>
         <span>Sydney</span>
       </div>
