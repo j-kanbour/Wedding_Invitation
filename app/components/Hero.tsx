@@ -30,7 +30,7 @@ export default function Hero() {
 
       <div className="hero-meta">
         <div className="hero-meta-item">
-          Date<span className="v">Sat 17 Jan 2027</span>
+          Date<span className="v">Sun 17 Jan 2027</span>
         </div>
         <div className="dot" aria-hidden />
         <div className="hero-meta-item">
